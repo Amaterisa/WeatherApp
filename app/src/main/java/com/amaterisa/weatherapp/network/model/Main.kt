@@ -10,4 +10,16 @@ data class Main(
     val pressure: Double,
     val humidity: Double
 ) {
+
+    fun getTempString(): String {
+        return temp.toString().substringBefore(".") + "°C"
+    }
+
+    fun getMinTempString(): String {
+        return "Min Temp " + minTemp.toString().substringBefore(".") + "°C"
+    }
+
+    fun getMaxTempString(): String {
+        return "Max Temp " + maxTemp.toString().substringBefore(".") + "°C"
+    }
 }

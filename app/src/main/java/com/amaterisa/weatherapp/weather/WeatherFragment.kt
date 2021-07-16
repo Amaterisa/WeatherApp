@@ -28,22 +28,6 @@ class WeatherFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        viewModel.property.observe(viewLifecycleOwner, { newProperty ->
-            showImage(binding.icon, newProperty.weather[0].icon)
-        })
-
         return binding.root
-    }
-
-    private fun showImage(imgView: ImageView, imgUrl: String){
-        val url = "http://openweathermap.org/img/w/${imgUrl}.png"
-        val imgUri = url.toUri().buildUpon().scheme("https").build()
-        Glide.with(this)
-            .load(imgUri)
-            .apply(
-                RequestOptions()
-//                .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
-            .into(imgView)
     }
 }
