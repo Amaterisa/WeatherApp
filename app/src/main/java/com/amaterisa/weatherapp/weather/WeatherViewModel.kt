@@ -1,21 +1,22 @@
 package com.amaterisa.weatherapp.weather
 
+import android.app.Application
 import androidx.lifecycle.*
 import com.amaterisa.weatherapp.network.*
-import com.amaterisa.weatherapp.network.model.WeatherProperty
+import com.amaterisa.weatherapp.network.model.WeatherForecastResponse
 import kotlinx.coroutines.launch
 
 enum class WeatherApiStatus { LOADING, ERROR, DONE }
 
-class WeatherViewModel: ViewModel() {
+class WeatherViewModel(application: Application): AndroidViewModel(application) {
     private val _status = MutableLiveData<WeatherApiStatus>()
 
     val status: LiveData<WeatherApiStatus>
         get() = _status
 
-    private val _property = MutableLiveData<WeatherProperty>()
+    private val _property = MutableLiveData<WeatherForecastResponse>()
 
-    val property: LiveData<WeatherProperty>
+    val forecastResponse: LiveData<WeatherForecastResponse>
         get() = _property
 
     init {

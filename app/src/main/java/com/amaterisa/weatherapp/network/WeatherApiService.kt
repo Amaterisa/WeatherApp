@@ -1,6 +1,6 @@
 package com.amaterisa.weatherapp.network
 
-import com.amaterisa.weatherapp.network.model.WeatherProperty
+import com.amaterisa.weatherapp.network.model.WeatherForecastResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -24,11 +24,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface WeatherApiService {
-    @GET("data/2.5/weather?")
+    @GET("data/2.5/forecast?")
     suspend fun getProperty(@Query("lat") lat: Double,
                             @Query("lon") lon: Double,
                             @Query("units") units: String,
-                            @Query("APPID") appId: String): WeatherProperty
+                            @Query("APPID") appId: String): WeatherForecastResponse
 }
 
 object WeatherApi {
