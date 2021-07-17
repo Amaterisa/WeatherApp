@@ -32,13 +32,27 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
             android:textSize="20sp"
-            android:text="@{viewModel.forecastResponse.city.name}"
+            android:text="@{viewModel.forecastResponse.city.location}"
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="City"/>
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="10sp"
+            android:text="@{viewModel.forecastResponse.list[0].dateUpdated}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityText"
+            tools:text="Date"/>
 
         <TextView
             android:id="@+id/temperatureText"
