@@ -2,8 +2,8 @@ package com.amaterisa.weatherapp.utils
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.amaterisa.weatherapp.network.model.City
-import com.amaterisa.weatherapp.network.model.WeatherForecast
+import com.amaterisa.weatherapp.model.City
+import com.amaterisa.weatherapp.model.WeatherForecast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

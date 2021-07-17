@@ -1,4 +1,4 @@
-package com.amaterisa.weatherapp.network.model
+package com.amaterisa.weatherapp.model
 
 data class City(
     val name: String,

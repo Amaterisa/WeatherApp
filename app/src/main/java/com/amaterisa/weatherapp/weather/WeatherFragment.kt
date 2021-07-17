@@ -2,15 +2,16 @@ package com.amaterisa.weatherapp.weather
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.amaterisa.weatherapp.weather.WeatherViewModel
 import com.amaterisa.weatherapp.databinding.WeatherFragmentBinding
 
 class WeatherFragment : Fragment() {
-//    private lateinit var viewModel: WeatherViewModel
 
     private val viewModel: WeatherViewModel by lazy {
         val activity = requireNotNull(this.activity) {
@@ -25,8 +26,6 @@ class WeatherFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
 
         val binding = WeatherFragmentBinding.inflate(inflater)
-
-//        viewModel = ViewModelProvider(requireActivity()).get(WeatherViewModel::class.java)
 
         binding.lifecycleOwner = this
 

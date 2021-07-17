@@ -15,6 +15,9 @@ interface WeatherForecastResponseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg weathers: DatabaseWeatherForecastResponse)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(weather: DatabaseWeatherForecastResponse)
 }
 
 @Database(entities = [DatabaseWeatherForecastResponse::class], version = 1)
