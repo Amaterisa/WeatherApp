@@ -6,15 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.net.toUri
-import com.amaterisa.weatherapp.R
+import com.amaterisa.weatherapp.weather.WeatherViewModel
 import com.amaterisa.weatherapp.databinding.WeatherFragmentBinding
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 
 class WeatherFragment : Fragment() {
-    private lateinit var viewModel: WeatherViewModel
+//    private lateinit var viewModel: WeatherViewModel
+
+    private val viewModel: WeatherViewModel by lazy {
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onViewCreated()"
+        }
+        ViewModelProvider(this, WeatherViewModel.Factory(activity.application)).get(WeatherViewModel::class.java)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,7 +26,7 @@ class WeatherFragment : Fragment() {
 
         val binding = WeatherFragmentBinding.inflate(inflater)
 
-        viewModel = ViewModelProvider(requireActivity()).get(WeatherViewModel::class.java)
+//        viewModel = ViewModelProvider(requireActivity()).get(WeatherViewModel::class.java)
 
         binding.lifecycleOwner = this
 

@@ -54,14 +54,22 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    implementation 'androidx.room:room-runtime:2.3.0'
+//    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+    kapt 'androidx.room:room-compiler:2.3.0'
+    implementation "androidx.room:room-ktx:2.3.0"
+
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    // Room database
-    implementation "androidx.room:room-runtime:$version_room"
-    kapt "androidx.room:room-compiler:$version_room"
+    implementation 'com.google.code.gson:gson:2.8.7'
 
-    // Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$version_room"
+//    // Room database
+//    implementation "androidx.room:room-runtime:$version_room"
+//    kapt "androidx.room:room-compiler:$version_room"
+//
+//    // Kotlin Extensions and Coroutines support for Room
+//    implementation "androidx.room:room-ktx:$version_room"
 }
