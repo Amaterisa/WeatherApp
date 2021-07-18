@@ -26,11 +26,11 @@ class WeatherViewModel(application: Application): AndroidViewModel(application) 
         initializeWeather()
     }
 
-    private fun refreshWeather(){
+    private fun refreshWeather(city: String){
         viewModelScope.launch {
             _status.value = WeatherApiStatus.LOADING
             try {
-                weathersRepository.refreshWeather()
+                weathersRepository.refreshWeather(city)
                 weather.value = weathersRepository.getCurrentWeather()
                 _status.value = WeatherApiStatus.DONE
             } catch (e: Exception) {
@@ -44,13 +44,18 @@ class WeatherViewModel(application: Application): AndroidViewModel(application) 
             try{
                 weather.value = weathersRepository.getCurrentWeather()
                 if (weathersRepository.getCurrentWeather() == null){
-                    refreshWeather()
+                    refreshWeather(MANAUS)
                 } else{
-                    Log.i("initializeWeather", "id " + weather.value?.id.toString())
+                    Log.i("initializeWeather", "id " + weather.value?.id.toString()
+                            + " city " + weather.value?.city?.name.toString())
                 }
             } catch (e: Exception) {
             }
         }
+    }
+
+    fun updateFilter(city: String) {
+        refreshWeather(city)
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {

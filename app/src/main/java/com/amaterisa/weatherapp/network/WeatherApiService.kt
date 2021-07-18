@@ -14,6 +14,9 @@ const val API_KEY = "b17b525ac44b891abf93bd977453713f"
 const val UNITS = "metric"
 const val MANAUS_LAT: Double = -3.107
 const val MANAUS_LON: Double = -60.02
+const val MANAUS: String = "manaus,br"
+const val LONDON: String = "london,uk"
+const val SEOUL: String = "seoul,kr"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -31,6 +34,11 @@ interface WeatherApiService {
                        @Query("lon") lon: Double,
                        @Query("units") units: String,
                        @Query("APPID") appId: String): Deferred<NetworkWeatherForecastResponse>
+
+    @GET("data/2.5/forecast?")
+    fun getWeather(@Query("q") city: String,
+                   @Query("units") units: String,
+                   @Query("APPID") appId: String): Deferred<NetworkWeatherForecastResponse>
 }
 
 object WeatherApi {

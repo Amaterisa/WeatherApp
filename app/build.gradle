@@ -68,6 +68,5 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
     // WorkManager
-//    implementation "android.arch.work:work-runtime-ktx:$version_work"
     implementation "androidx.work:work-runtime-ktx:$version_work"
 }
