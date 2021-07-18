@@ -11,19 +11,19 @@ interface WeatherForecastResponseDao {
     fun getWeathers(): LiveData<List<DatabaseWeatherForecastResponse>>
 
     @Query("select * from databaseweatherforecastresponse order by id DESC limit 1")
-    fun getCurrentWeather(): LiveData<DatabaseWeatherForecastResponse>
+    suspend fun getCurrentWeather(): DatabaseWeatherForecastResponse?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg weathers: DatabaseWeatherForecastResponse)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(weather: DatabaseWeatherForecastResponse)
+    fun insert(vararg weather: DatabaseWeatherForecastResponse)
 }
 
 @Database(entities = [DatabaseWeatherForecastResponse::class], version = 1)
 @TypeConverters(WeatherTypeConverters::class,)
 abstract class WeatherForecastResponsesDatabase : RoomDatabase() {
-    abstract fun weatherForecastResponseDao(): WeatherForecastResponseDao
+    abstract val weatherForecastResponseDao: WeatherForecastResponseDao
 }
 
 private lateinit var INSTANCE: WeatherForecastResponsesDatabase

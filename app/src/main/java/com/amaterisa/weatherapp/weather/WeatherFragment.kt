@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.amaterisa.weatherapp.weather.WeatherViewModel
 import com.amaterisa.weatherapp.databinding.WeatherFragmentBinding
+import com.amaterisa.weatherapp.model.WeatherForecastResponse
 
 class WeatherFragment : Fragment() {
 
@@ -30,6 +31,12 @@ class WeatherFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+
+        viewModel.weather.observe(viewLifecycleOwner, { newWeather ->
+            if (newWeather != null){
+                binding.weather = newWeather
+            }
+        })
 
         return binding.root
     }
