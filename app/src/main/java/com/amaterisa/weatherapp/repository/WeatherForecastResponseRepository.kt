@@ -32,7 +32,7 @@ class WeatherForecastResponseRepository(private val database: WeatherForecastRes
                 val weather =
                     WeatherApi.retrofitService.getWeather(MANAUS_LAT, MANAUS_LON, UNITS, API_KEY)
                         .await()
-                Log.i("VIEWMODEl", weather.city.name)
+                Log.i("refreshWeather", weather.id.toString())
                 database.weatherForecastResponseDao.insert(weather.asDatabaseModel())
             }
             } catch (e: Exception) {

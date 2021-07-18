@@ -14,9 +14,9 @@ data class DatabaseWeatherForecastResponse constructor(
     @PrimaryKey (autoGenerate = true)
     val id: Long?,
     @TypeConverters(WeatherTypeConverters::class)
-    val list: List<WeatherForecast>,
+    val list: List<WeatherForecast>?,
     @TypeConverters(WeatherTypeConverters::class)
-    val city: City
+    val city: City?
 )
 
 fun DatabaseWeatherForecastResponse.asDomainModel(): WeatherForecastResponse {

@@ -56,7 +56,6 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
     implementation 'androidx.room:room-runtime:2.3.0'
-//    annotationProcessor 'androidx.room:room-compiler:2.3.0'
     kapt 'androidx.room:room-compiler:2.3.0'
     implementation "androidx.room:room-ktx:2.3.0"
 
@@ -68,10 +67,7 @@ dependencies {
 
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
-//    // Room database
-//    implementation "androidx.room:room-runtime:$version_room"
-//    kapt "androidx.room:room-compiler:$version_room"
-//
-//    // Kotlin Extensions and Coroutines support for Room
-//    implementation "androidx.room:room-ktx:$version_room"
+    // WorkManager
+//    implementation "android.arch.work:work-runtime-ktx:$version_work"
+    implementation "androidx.work:work-runtime-ktx:$version_work"
 }

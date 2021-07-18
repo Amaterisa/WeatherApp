@@ -45,6 +45,8 @@ class WeatherViewModel(application: Application): AndroidViewModel(application) 
                 weather.value = weathersRepository.getCurrentWeather()
                 if (weathersRepository.getCurrentWeather() == null){
                     refreshWeather()
+                } else{
+                    Log.i("initializeWeather", "id " + weather.value?.id.toString())
                 }
             } catch (e: Exception) {
             }
