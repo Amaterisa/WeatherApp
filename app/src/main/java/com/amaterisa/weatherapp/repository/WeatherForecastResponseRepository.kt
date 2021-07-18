@@ -13,15 +13,6 @@ import kotlinx.coroutines.withContext
 
 class WeatherForecastResponseRepository(private val database: WeatherForecastResponsesDatabase) {
 
-    val weathers: LiveData<List<WeatherForecastResponse>> =
-        Transformations.map(database.weatherForecastResponseDao.getWeathers()) {
-            it.asDomainModel()
-        }
-
-//    val currentWeather: WeatherForecastResponse =
-//        database.weatherForecastResponseDao.getCurrentWeather().asDomainModel()
-//        }
-
     suspend fun getCurrentWeather(): WeatherForecastResponse?{
         return database.weatherForecastResponseDao.getCurrentWeather()?.asDomainModel()
     }

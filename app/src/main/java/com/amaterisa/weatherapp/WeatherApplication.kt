@@ -31,11 +31,9 @@ class WeatherApplication : Application() {
     private fun setupRecurringWork() {
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             WORK_NAME,
-            ExistingPeriodicWorkPolicy.REPLACE,
+            ExistingPeriodicWorkPolicy.KEEP,
             repeatingRequest)
-
     }
-
 
     override fun onCreate() {
         super.onCreate()

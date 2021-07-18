@@ -22,4 +22,12 @@ data class Main(
     fun getMaxTempString(): String {
         return "Max Temp " + maxTemp.toString().substringBefore(".") + "°C"
     }
+
+    fun getReducedMinTempString(): String {
+        return minTemp.toString().substringBefore(".") + "°C"
+    }
+
+    fun getReducedMaxTempString(): String {
+        return maxTemp.toString().substringBefore(".") + "°C"
+    }
 }

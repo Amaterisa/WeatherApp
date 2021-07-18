@@ -10,6 +10,14 @@ data class WeatherForecast(
 ) {
 
     fun getDateUpdated(): String{
-        return "Updated $date"
+        return "Updated $date UTC"
+    }
+
+    fun getDay(): String{
+        return "Day " + date.substring(8,10)
+    }
+
+    fun getHour(): String{
+        return date.substring(11,16)
     }
 }
