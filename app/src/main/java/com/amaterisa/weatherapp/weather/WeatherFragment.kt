@@ -1,8 +1,10 @@
 package com.amaterisa.weatherapp.weather
 
+import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amaterisa.weatherapp.R
@@ -21,6 +23,7 @@ class WeatherFragment : Fragment() {
 
     private var viewModelAdapter: WeatherAdapter? = null
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -32,7 +35,9 @@ class WeatherFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.weather.observe(viewLifecycleOwner, { newWeather ->
+
             if (newWeather != null){
+                binding.nestedScroll.fullScroll(View.FOCUS_UP)
                 binding.weather = newWeather
                 viewModelAdapter?.weathers = newWeather.list
             }
@@ -55,7 +60,7 @@ class WeatherFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        viewModel.updateFilter(
+        viewModel.updateCity(
             when (item.itemId) {
                 R.id.manaus -> MANAUS
                 R.id.london -> LONDON

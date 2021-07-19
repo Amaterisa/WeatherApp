@@ -46,15 +46,13 @@ class WeatherViewModel(application: Application): AndroidViewModel(application) 
                 if (weathersRepository.getCurrentWeather() == null){
                     refreshWeather(MANAUS)
                 } else{
-                    Log.i("initializeWeather", "id " + weather.value?.id.toString()
-                            + " city " + weather.value?.city?.name.toString())
                 }
             } catch (e: Exception) {
             }
         }
     }
 
-    fun updateFilter(city: String) {
+    fun updateCity(city: String) {
         refreshWeather(city)
     }
 

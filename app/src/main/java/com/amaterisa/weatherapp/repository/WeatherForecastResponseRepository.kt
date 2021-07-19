@@ -1,6 +1,5 @@
 package com.amaterisa.weatherapp.repository
 
-import android.util.Log
 import com.amaterisa.weatherapp.database.WeatherForecastResponsesDatabase
 import com.amaterisa.weatherapp.database.asDomainModel
 import com.amaterisa.weatherapp.model.WeatherForecastResponse
@@ -20,7 +19,6 @@ class WeatherForecastResponseRepository(private val database: WeatherForecastRes
                 val weather =
                     WeatherApi.retrofitService.getWeather(city, UNITS, API_KEY)
                         .await()
-                Log.i("refreshWeather", weather.id.toString())
                 database.weatherForecastResponseDao.insert(weather.asDatabaseModel())
             }
             } catch (e: Exception) {

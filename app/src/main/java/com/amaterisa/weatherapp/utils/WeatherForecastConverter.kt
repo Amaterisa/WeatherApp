@@ -1,6 +1,5 @@
 package com.amaterisa.weatherapp.utils
 
-import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.amaterisa.weatherapp.model.City
 import com.amaterisa.weatherapp.model.WeatherForecast
